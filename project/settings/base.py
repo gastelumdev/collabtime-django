@@ -26,7 +26,7 @@ SECRET_KEY = 'RwEUWywb>:9#>[;9ar&HG,UT/$DY*63g.V"drKg"uQx>6SzY\+dfgsdfgsdgd'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = ['collabtime.online', 'www.collabtime.online']
+# ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
