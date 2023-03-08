@@ -39,7 +39,7 @@ class LoginView(View):
                 return render(
                     request,
                     'registration/login.html',
-                    { 'form': form, 'invalid_creds': True}
+                    { 'form': form, 'invalid_creds': True, }
                 )
 
             try:
@@ -48,12 +48,18 @@ class LoginView(View):
                 return render(
                     request,
                     'registration/login.html',
-                    { 'form': form, 'invalid_creds': True}
+                    { 'form': form, 'invalid_creds': True, }
                 )
 
             login(request, user)
 
             return redirect(reverse('events'))
+        else:
+            return render(
+                request,
+                'registration/login.html',
+                { 'form': form, 'invalid_creds': True, }
+            )
 
 class EventsView(LoginRequiredMixin, View):
     def get(self, request):
