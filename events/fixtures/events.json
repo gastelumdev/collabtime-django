@@ -1,0 +1,19 @@
+[
+{
+  "model": "events.event",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "title": "Collabtime",
+    "slug": "collabtime",
+    "overview": "A collaboration in the time",
+    "date": "2023-02-28T12:00:00Z",
+    "street": "123 Street St",
+    "city": "South City",
+    "state": "CA",
+    "country": "US",
+    "zipcode": "91786",
+    "created": "2023-02-26T23:51:22.206Z"
+  }
+}
+]

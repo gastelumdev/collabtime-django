@@ -1,0 +1,48 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% block title %}Log-in{% endblock %}
+{% block auth_content %}
+<div class="card">
+    <div class="card-body">
+        <div class="m-sm-4">
+            <div class="text-center">
+                <img src="{% static 'img/icons/icon-48x48.png' %}" alt="Charles Hall" class="img-fluid rounded-circle" width="50" height="50" />
+            </div>
+            <form action="{% url 'login' %}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input class="form-control form-control-lg" type="text" name="username" placeholder="Enter your username" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+                    <small>
+                        <a href="{% url 'register' %}">Signup</a>
+                    </small>
+                </div>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+                <div class="text-center mt-3">
+                    <button class="btn btn-lg btn-primary">Sign in</button>
+                    <!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% comment %} <div class="module">
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% else %}
+    <p>Please, use the following form to log-in:</p>
+    {% endif %}
+    <div class="login-form">
+        <form action="{% url 'login' %}" method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Log-in"></p>
+        </form>
+    </div>
+</div> {% endcomment %}
+{% endblock %}

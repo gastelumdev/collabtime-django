@@ -1,0 +1,54 @@
+{% extends "auth_base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}Log-in{% endblock %}
+{% block auth_content %}
+<div class="text-center mt-4">
+    <h1 class="h2">Get started</h1>
+    <p class="lead">
+        Start creating the best possible user experience for you customers.
+    </p>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="m-sm-4">
+            <form action="{% url 'register' %}" method="POST" autocomplete="off">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+                    {{ form.username|add_class:"form-control form-control-lg" }}
+                    <div class="invalid-feedback">
+                        {{ form.username.errors }}
+                    </div>
+                    {% comment %} <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" /> {% endcomment %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="{{ form.password1.id_for_label }}">Password</label>
+                    {{ form.password1|add_class:"form-control form-control-lg" }}
+                    <div class="invalid-feedback">
+                        {{ form.password1.errors }}
+                    </div>
+                    {% comment %} <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" /> {% endcomment %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="{{ form.password2.id_for_label }}">Re-enter Password</label>
+                    {{ form.password2|add_class:"form-control form-control-lg" }}
+                    <div class="invalid-feedback">
+                        {{ form.password2.errors }}
+                    </div>
+                    <small>
+                        <a href="{% url 'login' %}">Login</a>
+                    </small>
+                    {% comment %} <input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name" /> {% endcomment %}
+                </div>
+                <div class="text-center mt-3">
+                    {% comment %} <a href="index.html" class="btn btn-lg btn-primary">Sign up</a> {% endcomment %}
+                    <button type="submit" class="btn btn-lg btn-primary">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
