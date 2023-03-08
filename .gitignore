@@ -139,7 +139,6 @@ GitHub.sublime-settings
 # MISC
 db.png
 ssl/
-static/
 daphne.sock
 daphne.sock.lock
 uwsgi_app.sock
