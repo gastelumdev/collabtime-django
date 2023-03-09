@@ -10,7 +10,7 @@ class EchoConsumer(WebsocketConsumer):
         self.accept()
  
         # Send message to client
-        self.send(text_data="You are connected!")
+        self.send(text_data="From Collabtime!")
  
     def disconnect(self, close_code):
         """Event when client disconnects"""
