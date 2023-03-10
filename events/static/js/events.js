@@ -4,5 +4,5 @@ const myWebSocket = new WebSocket(`${document.body.dataset.scheme === 'http' ? '
 // Event when a new message is received by WebSockets
 myWebSocket.addEventListener("message", (event) => {
     // Display the message in '#welcome'.
-    document.querySelector("#welcome").textContent = event.data;
+    document.querySelector("#welcomeMessage").textContent = event.data;
 });

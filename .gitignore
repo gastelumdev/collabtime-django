@@ -138,6 +138,7 @@ GitHub.sublime-settings
 
 # MISC
 db.png
+
 ssl/
 static/
 daphne.sock
