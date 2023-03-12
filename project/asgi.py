@@ -14,7 +14,7 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from django.urls import re_path
-from events.consumers import EchoConsumer
+from events.consumers import EventsConsumer
 import events.routing
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
 

@@ -1,5 +1,63 @@
-{% extends "dashboard_base.html" %}
-{% block dashboard_content %}
+{% extends "topnav_base.html" %}
+{% block topnav_content %}
+<!-- Button trigger modal -->
+<div class="d-grid gap-2 d-md-flex justify-content-sm-end">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createEventModal">
+    Create Event
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="createEventModal" tabindex="-1" aria-labelledby="createEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-lg-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fs-3" id="createEventModalLabel">Create Event</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+                <form>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__title" placeholder="Title">
+                        <label class="fs-4" for="event-form__title">Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control fs-4" placeholder="Overview" id="event-form__overview" rows="3"></textarea>
+                        <label class="fs-4" for="event-form__overview">Overview</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input class="form-control fs-4" type="date" id="event-form__date" placeholder="Date">
+                        <label class="fs-4" for="event-form__date">Event Date</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__street" placeholder="Street">
+                        <label class="fs-4" for="event-form__street">Street</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__city" placeholder="City">
+                        <label class="fs-4" for="event-form__city">City</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__state" placeholder="State">
+                        <label class="fs-4" for="event-form__state">State</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__country" placeholder="Country">
+                        <label class="fs-4" for="event-form__country">Country</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control fs-4" id="event-form__zipcode" placeholder="Zipcode">
+                        <label class="fs-4" for="event-form__zipcode">Zipcode</label>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-sm-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="event-form__submit">Save Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="text-center mt-4">
         <h1 class="h2">Events</h1>
@@ -10,21 +68,22 @@
         </p>
     </div>
 
-    {% for event in events %}
-    <div class="col-12 col-md-6">
-        <div class="card">
+    <section id="events">
+        <div id="events__list"></div>
+    </section>
+
+    {% comment %} {% for event in events %}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card border border-secondary">
             <div class="card-header">
                 <h5 class="card-title mb-0">{{ event.title }}</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+                <p class="card-text">{{ event.overview }}</p>
             </div>
         </div>
     </div>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
 
 </div>
 {% endblock %}
