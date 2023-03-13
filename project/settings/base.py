@@ -33,7 +33,6 @@ SECRET_KEY = 'RwEUWywb>:9#>[;9ar&HG,UT/$DY*63g.V"drKg"uQx>6SzY\+dfgsdfgsdgd'
 
 INSTALLED_APPS = [
     'daphne',
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'events.apps.EventsConfig',
     'widget_tweaks',
+    'channels',
 ]
 
 MIDDLEWARE = [

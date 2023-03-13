@@ -22,14 +22,14 @@ application = ProtocolTypeRouter({
     # Django's ASGI application to handle traditional HTTP requests
     "http": get_asgi_application(),
     # WebSocket handler
-    # "websocket": AuthMiddlewareStack(
-    #     URLRouter([
-    #         re_path(r"^ws/echo/$", EchoConsumer.as_asgi()),
-    #     ])
-    # ),
-    'websocket': AllowedHostsOriginValidator(
-        AuthMiddlewareStack(
-            URLRouter(events.routing.websocket_urlpatterns)
-        )
+    "websocket": AuthMiddlewareStack(
+        URLRouter([
+            re_path(r"^ws/events/$", EventsConsumer.as_asgi()),
+        ])
     ),
+    # 'websocket': AllowedHostsOriginValidator(
+    #     AuthMiddlewareStack(
+    #         URLRouter(events.routing.websocket_urlpatterns)
+    #     )
+    # ),
 })

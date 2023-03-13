@@ -1,4 +1,5 @@
-// Connect to WebSockets server (EchoConsumer)
+// Connect to WebSockets server
+
 const myWebSocket = new WebSocket(`${document.body.dataset.scheme === 'http' ? 'ws' : 'wss'}://${document.body.dataset.host}/ws/events/`);
 const inputTitle = document.querySelector("#event-form__title");
 const inputOverview = document.querySelector("#event-form__overview");
@@ -10,9 +11,21 @@ const inputCountry = document.querySelector("#event-form__country");
 const inputZipcode = document.querySelector("#event-form__zipcode");
 const inputSubmit = document.querySelector("#event-form__submit")
 
+// getData({ "action": "list events", "data": {} }, myWebSocket)
+
 /*
     FUNCTIONS
 */
+
+/**
+ * Send an event to retrieve data from WebSockets server
+ * @param {string} event
+ * @param {WebSocket} webSocket
+ * @return {void}
+ */
+function getData(event, webSocket) {
+    webSocket.send(JSON.stringify(event));
+}
 
 /**
  * Send data to WebSockets server

@@ -13,9 +13,11 @@ class EventsConsumer(JsonWebsocketConsumer):
         # Accept the connection
         self.accept()
         # Assign the Broadcast group
+        print(self.channel_name)
         async_to_sync(self.channel_layer.group_add)(self.room_name, self.channel_name)
         # Send you all the messages stored in the database.
         self.send_list_events()
+        print("List sent")
         
  
     def disconnect(self, close_code):
@@ -37,8 +39,9 @@ class EventsConsumer(JsonWebsocketConsumer):
         match data_received['action']:
             case 'add event':
                 print('Event added!')
-            case 'list messages':
-                self.send_list_messages()
+                self.send_list_events()
+            case 'list events':
+                self.send_list_events()
 
     def send_html(self, event):
         """Event: Send html to client"""
@@ -49,6 +52,7 @@ class EventsConsumer(JsonWebsocketConsumer):
         self.send_json(data)
 
     def send_list_events(self):
+        print('Sending list')
         events = Event.objects.order_by('-created')
         async_to_sync(self.channel_layer.group_send)(
             self.room_name, {

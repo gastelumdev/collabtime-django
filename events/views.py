@@ -52,6 +52,7 @@ class LoginView(View):
                 )
 
             login(request, user)
+            request.session['user_id'] = user.id
 
             return redirect(reverse('events'))
         else:
@@ -66,7 +67,8 @@ class EventsView(LoginRequiredMixin, View):
         events = Event.objects.filter(owner=request.user).all()
 
         context = {
-            'events': events
+            'events': events,
+            'user_id': request.session.get('user_id', 0)
         }
 
         return render(request, 'events.html', context)
